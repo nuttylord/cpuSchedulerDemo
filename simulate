@@ -3,18 +3,23 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~"
 echo "welcome to my project!!"
 echo "~~~~~~~~~~~~~~~~~~~~~~~"
 
-echo "Would you like to run the code?(Y/N)"
+echo "Would you like to run a demo?(1/2/3/all)"
 
 read firstinput
 
-echo "$firstinput"
-
-if [ "$firstinput" = "Y" ]
+if [ "$firstinput" = "1" ]
 then
-	./perlscript.pl 5 30 20 > input.txt
-elif [ "$firstinput" = "N" ]
+	echo "./make demo1"
+elif [ "$firstinput" = "2" ]
 then
-	echo "ok, run ./simulate again if you would like to run the code or try 'make demo', 'make demo1', 'make demo2', 'make demo3' etc to run one instance of the code"
-else 
-	echo "please input Y or N"
+	./make demo2
+elif [ "$firstinput" = "3" ]
+then
+	./make demo3
+elif [ "$firstinput" = "all" ]
+then
+	./make demo
+else
+	echo "ok, run ./simulate again if you would like to run the code or try 'make demo', 'make demo1', 'make demo2', 'make demo3' etc to run one of the instances of the code(or all for make demo)"
+	echo "please try again and input 1, 2, 3 or all (case sensitive)"
 fi

@@ -7,7 +7,7 @@
 #include <queue>
 
 #include <vector>
-#include <string> // not 100% efficient(char*[]) but it works on the fly! 
+#include <string> // not 100% efficient(char*[]) but it works on the fly!
 
 #include <sstream>
 
@@ -24,11 +24,11 @@ namespace patch // this is here due to a bug with g++ (all hail the almighty g++
 
 using std::queue;
 
-// i use a struct because its lightweight and usable on the fly, 
+// i use a struct because its lightweight and usable on the fly,
 // less overhead than making a class and also no need to
 struct Job
 {
-	Job() // default constructor 
+	Job() // default constructor
 		: job_id(""), arrival_time(0), duration(0)
 	{};
 	Job(std::string job_id, int arrival_time, int duration)
@@ -48,34 +48,39 @@ struct Job
 
 int main (int argc, char* argv[])
 {
+//	std::cout << "0" << argv[0] << std::endl;
+//	std::cout << "1" << argv[1] << std::endl;
+std::string obj = argv[0];
+//std::cout << "2" << obj.substr(0) << std::endl;
+//std::cout << "3" << obj.substr(2) << std::endl;
+	//std::string obj = argv[0];
 	std::string line;
-   	//std::ifstream inputFile ("test.txt");
+   	std::ifstream inputFile ("demo_input" + obj.substr(6) + ".txt");
 	queue<Job> jobList;
 	Job x;
-	std::cout << "echo 'i do stuff'" << std::endl;
-	for (int i = 1; i < argc ; i++) {
-		std::cout << "out: " << argv[i] << std::endl;
-	}
-//if (inputFile.is_open())
-//{
-//   while ( getline (inputFile, line) )
-//    {
-//		// input may be array (int main(args)) https://stackoverflow.com/questions/20234898/correct-way-of-loop-through-the-c-arrays
-//		std::cout << " .. " << line << std::endl;
-//
-//			x.job_id = line.substr(0, line.find(" "));
-//			x.arrival_time = std::stoi(line.substr(line.find(" "), line.find(" ")).c_str());
-//			x.duration = std::stoi(line.substr(line.find_last_of(" ")).c_str());
-//			jobList.push(x);
-//        }
-//		std::cout << "done" << std::endl;
-//	}
 
-	while (!jobList.empty())
-	{
-		std::cout << "out: " << jobList.front().toString() << std::endl;
-		jobList.pop();
+	std::cout << "? This is the generated list of inputs" << std::endl;
+	for (int i = 1; i < argc ; i++) {
+		std::cout << argv[i] << std::endl;
 	}
+	if (inputFile.is_open())
+	{
+		while ( getline (inputFile, line) )
+		{
+			std::cout << " .. " << line << std::endl;
+
+			x.job_id = line.substr(0, line.find(" "));
+			x.arrival_time = std::stoi(line.substr(line.find(" "), line.find(" ")).c_str());
+			x.duration = std::stoi(line.substr(line.find_last_of(" ")).c_str());
+			jobList.push(x);
+        	}
+	}
+//	std::cout << "? This is the generated list of inputs" << std::endl;
+//	while (!jobList.empty())
+//	{
+//		std::cout << jobList.front().toString() << std::endl;
+//		jobList.pop();
+//	}
 
 	system("pause");
     return 0;
