@@ -1,0 +1,20 @@
+#!/bin/bash
+echo "~~~~~~~~~~~~~~~~~~~~~~~"
+echo "welcome to my project!!"
+echo "~~~~~~~~~~~~~~~~~~~~~~~"
+
+echo "Would you like to run the code?(Y/N)"
+
+read firstinput
+
+echo "$firstinput"
+
+if [ "$firstinput" = "Y" ]
+then
+	./perlscript.pl 5 30 20 > input.txt
+elif [ "$firstinput" = "N" ]
+then
+	echo "ok, run ./simulate again if you would like to run the code or try 'make demo', 'make demo1', 'make demo2', 'make demo3' etc to run one instance of the code"
+else 
+	echo "please input Y or N"
+fi
